@@ -225,13 +225,12 @@ prompt_pure_precmd() {
 		prompt_pure_check_git_arrows
 		# get vcs info
 		vcs_info
+		# preform async git dirty check and fetch
+		prompt_pure_async_tasks
 	fi
 
 	# shows the full path in the title
 	prompt_pure_set_title 'expand-prompt' '%~'
-
-	# preform async git dirty check and fetch
-	prompt_pure_async_tasks
 
 	# print the preprompt
 	prompt_pure_preprompt_render "precmd"
