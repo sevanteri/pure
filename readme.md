@@ -2,7 +2,7 @@
 
 > Pretty, minimal and fast ZSH prompt
 
-<img src="screenshot.png" width="550">
+<img src="screenshot.png" width="864">
 
 
 ## Overview
@@ -11,10 +11,10 @@ Most prompts are cluttered, ugly and slow. I wanted something visually pleasing 
 
 ### Why?
 
-- Comes with the perfect prompt character.  
+- Comes with the perfect prompt character.
   Author went through the whole Unicode range to find it.
 - Shows `git` branch and whether it's dirty (with a `*`).
-- Indicates when you have unpushed/unpulled `git` commits with up/down arrows.
+- Indicates when you have unpushed/unpulled `git` commits with up/down arrows. *(Check is done asynchronously!)*
 - Prompt character turns red if the last command didn't exit with `0`.
 - Command execution time will be displayed if it exceeds the set threshold.
 - Username and host only displayed when in an SSH session.
@@ -39,7 +39,7 @@ That's it. Skip to [Getting started](#getting-started).
 1. Either…
   - Clone this repo
   - add it as a submodule, or
-  - just download `pure.zsh`
+  - just download `pure.zsh` and `async.zsh`
 
 2. Symlink `pure.zsh` to somewhere in [`$fpath`](http://www.refining-linux.org/archives/46/ZSH-Gem-12-Autoloading-functions/) with the name `prompt_pure_setup`.
 
@@ -74,7 +74,7 @@ Initialize the prompt system (if not so already) and choose `pure`:
 
 ```sh
 # .zshrc
-autoload -U promptinit && promptinit
+autoload -U promptinit; promptinit
 prompt pure
 ```
 
@@ -114,7 +114,7 @@ Defines the git up arrow symbol. The default value is `⇡`.
 ```sh
 # .zshrc
 
-autoload -U promptinit && promptinit
+autoload -U promptinit; promptinit
 
 # optionally define some options
 PURE_CMD_MAX_EXEC_TIME=10
@@ -125,19 +125,20 @@ prompt pure
 
 ## Tips
 
-[Tomorrow Night Eighties](https://github.com/chriskempson/tomorrow-theme) theme with the [Droid Sans Mono](http://www.google.com/webfonts/specimen/Droid+Sans+Mono) font (15pt) is a beautiful combination, as seen in the screenshot above. Just make sure you have anti-aliasing enabled in your Terminal.
+In the screenshot you see Pure running in [HyperTerm](https://hyperterm.org) with the [hyperterm-snazzy](https://github.com/sindresorhus/hyperterm-snazzy) theme and Menlo font.
 
-To have commands colorized as seen in the screenshot install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting).
+The [Tomorrow Night Eighties](https://github.com/chriskempson/tomorrow-theme) theme with the [Droid Sans Mono](https://fonts.google.com/specimen/Droid+Sans+Mono) font (15pt) is also a [nice combination](https://github.com/sindresorhus/pure/blob/95ee3e7618c6e2162a1e3cdac2a88a20ac3beb27/screenshot.png).<br>
+*Just make sure you have anti-aliasing enabled in your terminal.*
+
+To have commands colorized as seen in the screenshot, install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting).
 
 
 ## Integration
 
 ### [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
-1. Remove competing theme included in oh-my-zsh `~/.oh-my-zsh/themes/pure.zsh-theme`
-2. Symlink (or copy) `pure.zsh` to `~/.oh-my-zsh/custom/pure.zsh-theme`
-3. Symlink (or copy) `async.zsh` to `~/.oh-my-zsh/custom/async.zsh`
-4. Add `ZSH_THEME="pure"` to your `.zshrc` file.
+1. Symlink (or copy) `pure.zsh` to `~/.oh-my-zsh/custom/themes/pure.zsh-theme`.
+2. Set `ZSH_THEME="pure"` in your `.zshrc` file.
 
 ### [prezto](https://github.com/sorin-ionescu/prezto)
 
@@ -194,7 +195,7 @@ On a default setup, running the command `kldload pty` should do the trick. If yo
 ## Ports
 
 * **Bash**
-	* [sapegin/dotfiles](https://github.com/sapegin/dotfiles)’s [prompt](https://github.com/sapegin/dotfiles/blob/master/includes/bash_prompt.bash) and [color theme](https://github.com/sapegin/dotfiles/tree/master/color) for `Terminal.app`.
+	* [sapegin/dotfiles](https://github.com/sapegin/dotfiles)’s [prompt](https://github.com/sapegin/dotfiles/blob/dd063f9c30de7d2234e8accdb5272a5cc0a3388b/includes/bash_prompt.bash) and [color theme](https://github.com/sapegin/dotfiles/tree/master/color) for `Terminal.app`.
 * **Fish**
 	* [brandonweiss/pure.fish](https://github.com/brandonweiss/pure.fish): a Pure-inspired prompt for Fish, not intended to have feature parity.
 	* [rafaelrinaldi/pure](https://github.com/rafaelrinaldi/pure), support for bare Fish and various framework ([Oh-My-Fish](https://github.com//oh-my-fish/oh-my-fish), [Fisherman](https://github.com//fisherman/fisherman) and [Wahoo](https://github.com//bucaran/wahoo)).
